@@ -1,0 +1,40 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1e1e2f;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #2a2a3f;
+  border-radius: 10px;
+}
+button {
+  margin: 10px 5px;
+  padding: 10px 15px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.band {
+  margin-top: 20px;
+}
+.band img {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+.band em {
+  color: #8be9fd;
+  font-style: italic;
+}
+.band strong {
+  color: #ff79c6;
+}
