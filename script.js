@@ -1,47 +1,45 @@
-
 // script.js
-let score = 0;
-const scoreDisplay = document.getElementById("score");
-const progressBar = document.getElementById("progressBar");
-const achievementsList = document.getElementById("achievements");
 
-function updateUI() {
-  scoreDisplay.textContent = score;
-  progressBar.value = score;
+let score = 0;
+
+function updateScore() {
+  document.getElementById("score").textContent = score;
+  updateProgress();
   updateAchievements();
 }
 
 function addPoint() {
   score++;
-  updateUI();
+  updateScore();
 }
 
 function resetScore() {
-  if (confirm("Tem certeza que deseja resetar os pontos?")) {
+  if (confirm("Tem certeza que quer resetar seus pontos?")) {
     score = 0;
-    updateUI();
+    updateScore();
   }
 }
 
+function updateProgress() {
+  const progress = document.getElementById("progressBar");
+  progress.value = Math.min(score, 100);
+}
+
 function updateAchievements() {
-  const items = achievementsList.querySelectorAll("li");
-  items.forEach((item, index) => {
-    const thresholds = [10, 50, 100];
-    if (score >= thresholds[index]) {
-      item.classList.remove("locked");
-      item.innerHTML = item.innerHTML.replace("🔒", "✅");
-    } else {
-      item.classList.add("locked");
-      item.innerHTML = item.innerHTML.replace("✅", "🔒");
-    }
-  });
+  const achievements = document.querySelectorAll("#achievements li");
+
+  achievements[0].classList.toggle("locked", score < 10);
+  achievements[1].classList.toggle("locked", score < 50);
+  achievements[2].classList.toggle("locked", score < 100);
 }
 
-function showTab(tabId) {
+function showTab(tabName) {
   document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
-  document.getElementById(`${tabId}-tab`).classList.add("active");
+  document.getElementById(`${tabName}-tab`).classList.add("active");
 }
 
-// Inicializa
-updateUI();
-showTab("main");
+// Inicializa ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+  updateScore();
+  showTab("main");
+});
