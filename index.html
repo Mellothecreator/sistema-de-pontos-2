@@ -1,130 +1,61 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema de Pontos</title>
-  <style>
-    body {
-      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      color: #ffffff;
-    }
-
-    .score {
-      font-size: 20px;
-      margin: 10px 0 20px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 30px;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: #6a11cb;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      color: white;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #2575fc;
-    }
-
-    .band-quote {
-      margin-bottom: 20px;
-      padding: 15px;
-      background-color: #1c1c2c;
-      border-left: 5px solid #6a11cb;
-      border-radius: 10px;
-    }
-
-    .band-quote img {
-      width: 30px;
-      vertical-align: middle;
-      margin-right: 10px;
-    }
-
-    .band-name {
-      font-weight: bold;
-      color: #ff69b4;
-    }
-
-    .miw {
-      color: #db3eb1;
-    }
-
-    .song {
-      font-style: italic;
-      color: #00d4ff;
-    }
-  </style>
+  <title>Jornada de Resistência - SixFix</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Sistema de Pontos</h1>
-    <p class="score">Pontos: <span id="score">0</span></p>
-    <div class="buttons">
-      <button onclick="addPoint()">+1 ponto</button>
-      <button onclick="resetScore()">Resetar</button>
-    </div>
+    <header>
+      <h1>🔥 Jornada de Resistência 🔥</h1>
+      <nav>
+        <button onclick="showTab('inicio')">Início</button>
+        <button onclick="showTab('conquistas')">Conquistas</button>
+        <button onclick="showTab('diario')">Diário</button>
+      </nav>
+    </header>
 
-    <div class="band-quote">
-      <span class="band-name">💬 Paramore:</span> "It's just a spark, but it's enough to keep me going..." – <span class="song">Last Hope</span>
-    </div>
+    <main>
+      <section id="inicio" class="tab active">
+        <h2>Bem-vindo de volta!</h2>
+        <p>Você está há <span id="dias">0</span> dias sem recaídas.</p>
+        <div class="score-panel">
+          <p>Pontos: <span id="score">0</span></p>
+          <button onclick="addPoint()">+1 ponto</button>
+          <button onclick="resetScore()" class="reset">Resetar</button>
+        </div>
 
-    <div class="band-quote">
-      <span class="band-name miw">💬 Motionless in White:</span> "If I can't let go, will you carry me home?" – <span class="song">Another Life</span>
-    </div>
+        <div class="progress-section">
+          <label>Progresso:</label>
+          <progress id="progressBar" value="0" max="100"></progress>
+        </div>
 
-    <div class="band-quote">
-      <span class="band-name">💬 Paramore:</span> "How did we get here, when I used to know you so well?" – <span class="song">Decode</span>
-    </div>
+        <div class="quote">
+          <p>✨ "It's just a spark, but it's enough to keep me going..." – <em>Last Hope, Paramore</em></p>
+        </div>
+      </section>
 
-    <div class="band-quote">
-      <span class="band-name">💬 Paramore:</span> "You are the only exception..." – <span class="song">The Only Exception</span>
-    </div>
+      <section id="conquistas" class="tab">
+        <h2>🏆 Conquistas</h2>
+        <ul id="achievements">
+          <li class="locked">🔒 <strong>Primeira Semana</strong> – 7 dias sem recaída</li>
+          <li class="locked">🔒 <strong>Spark of Hope</strong> – Inspirado em "Last Hope"</li>
+          <li class="locked">🔒 <strong>Living Another Life</strong> – Inspirado em "Another Life"</li>
+          <li class="locked">🔒 <strong>Decode Iniciado</strong> – 10 pontos acumulados</li>
+        </ul>
+      </section>
 
-    <div class="band-quote">
-      <span class="band-name miw">💬 Motionless in White:</span> "Tell me how it's all in code..." – <span class="song">Code</span>
-    </div>
+      <section id="diario" class="tab">
+        <h2>📔 Diário</h2>
+        <textarea id="journal" placeholder="Escreva como você está se sentindo hoje..."></textarea>
+        <button onclick="saveJournal()">Salvar</button>
+      </section>
+    </main>
   </div>
 
-  <script>
-    let score = 0;
-    const scoreDisplay = document.getElementById('score');
-
-    function addPoint() {
-      score++;
-      scoreDisplay.textContent = score;
-    }
-
-    function resetScore() {
-      score = 0;
-      scoreDisplay.textContent = score;
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
