@@ -1,59 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jornada de Resistência - SixFix</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema de Pontos</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>🔥 Jornada de Resistência 🔥</h1>
-      <nav>
-        <button onclick="showTab('inicio')">Início</button>
-        <button onclick="showTab('conquistas')">Conquistas</button>
-        <button onclick="showTab('diario')">Diário</button>
-      </nav>
+      <h1>Sistema de Pontos - Jornada Pessoal</h1>
     </header>
 
-    <main>
-      <section id="inicio" class="tab active">
-        <h2>Bem-vindo de volta!</h2>
-        <p>Você está há <span id="dias">0</span> dias sem recaídas.</p>
-        <div class="score-panel">
-          <p>Pontos: <span id="score">0</span></p>
-          <button onclick="addPoint()">+1 ponto</button>
-          <button onclick="resetScore()" class="reset">Resetar</button>
-        </div>
+    <nav>
+      <button onclick="showTab('main')">Início</button>
+      <button onclick="showTab('conquistas')">Conquistas</button>
+    </nav>
 
-        <div class="progress-section">
-          <label>Progresso:</label>
-          <progress id="progressBar" value="0" max="100"></progress>
-        </div>
+    <div id="main-tab" class="tab active">
+      <div class="score-panel">
+        <h2>Pontos: <span id="score">0</span></h2>
+        <button onclick="addPoint()">+1 Ponto</button>
+        <button class="reset" onclick="resetScore()">Resetar</button>
+      </div>
 
-        <div class="quote">
-          <p>✨ "It's just a spark, but it's enough to keep me going..." – <em>Last Hope, Paramore</em></p>
-        </div>
-      </section>
+      <div class="progress-section">
+        <h3>Progresso</h3>
+        <progress id="progressBar" value="0" max="100"></progress>
+      </div>
 
-      <section id="conquistas" class="tab">
-        <h2>🏆 Conquistas</h2>
-        <ul id="achievements">
-          <li class="locked">🔒 <strong>Primeira Semana</strong> – 7 dias sem recaída</li>
-          <li class="locked">🔒 <strong>Spark of Hope</strong> – Inspirado em "Last Hope"</li>
-          <li class="locked">🔒 <strong>Living Another Life</strong> – Inspirado em "Another Life"</li>
-          <li class="locked">🔒 <strong>Decode Iniciado</strong> – 10 pontos acumulados</li>
-        </ul>
-      </section>
+      <div class="quote">
+        “It's just a spark, but it's enough to keep me going.” – Paramore (Last Hope)
+      </div>
 
-      <section id="diario" class="tab">
-        <h2>📔 Diário</h2>
-        <textarea id="journal" placeholder="Escreva como você está se sentindo hoje..."></textarea>
-        <button onclick="saveJournal()">Salvar</button>
-      </section>
-    </main>
+      <textarea id="journal" placeholder="Escreva aqui como você está se sentindo hoje..."></textarea>
+    </div>
+
+    <div id="conquistas-tab" class="tab">
+      <h2>Conquistas</h2>
+      <ul id="achievements">
+        <li class="locked">🔒 10 Pontos - "Decode o começo" (Paramore)</li>
+        <li class="locked">🔒 50 Pontos - "Desbloqueando Another Life" (Motionless in White)</li>
+        <li class="locked">🔒 100 Pontos - "Turn It Off? Nunca mais." (Paramore)</li>
+      </ul>
+    </div>
   </div>
 
   <script src="script.js"></script>
